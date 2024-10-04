@@ -1,9 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-export const homeUrl = '/meta' as const
-
 const urls = [
-  homeUrl,
   '/meta/chatbot-flow-builder',
   '/meta/comment-auto-reply',
   '/meta/import-social-media',
@@ -26,10 +23,6 @@ const urls = [
 ] as const
 
 const routeRecords: Record<(typeof urls)[number], Omit<RouteRecordRaw, 'path'>> = {
-  '/meta': {
-    name: 'meta',
-    component: () => import('./views/MetaHomePage.vue'),
-  },
   '/meta/chatbot-flow-builder': {
     name: 'chatbot-flow-builder',
     component: () => import('./views/MetaHomePage.vue'),
@@ -114,10 +107,6 @@ export const routes = Object.entries(routeRecords).map(([key, values]) => ({
 }))
 
 const sidebarLinks: Record<(typeof urls)[number], { label: string; icon: string }> = {
-  '/meta': {
-    label: 'Home',
-    icon: 'material-symbols:home-outline',
-  },
   '/meta/chatbot-flow-builder': {
     label: 'Chatbot Flow Builder',
     icon: 'fluent-mdl2:flow',

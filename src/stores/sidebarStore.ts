@@ -27,11 +27,23 @@ export const useSidebarStore = defineStore('sidebar', () => {
     throw new Error('Service not found')
   }
 
+  // GET SERVICE HEADING
+  const serviceHeading = ref({
+    meta: 'Meta Automation',
+  })
+
+  function getServiceHeading(routePath: string) {
+    if (routePath.includes('meta')) return serviceHeading.value.meta
+
+    throw new Error('Service not found')
+  }
+
   return {
     isMobileSidebarOpen,
     toggleMobileSidebar,
     logoutUser,
     links,
     getServiceLinks,
+    getServiceHeading,
   }
 })
